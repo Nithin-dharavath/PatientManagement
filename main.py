@@ -22,6 +22,10 @@ def view_data():
     data = load_data()
     return data
 
-@app.get("/home")
-def load_home():
-    return {"message" : "login Page"}
+@app.get("/patient/{patient_id}")
+def Patient_id(patient_id : str):
+    data = load_data()
+    if patient_id in data:
+        return data[patient_id]
+    else:
+        return {"error" : "patient details not found"}
