@@ -21,3 +21,7 @@ def load_about():
 def view_data():
     data = load_data()
     return data
+
+@app.get("/home")
+def load_home():
+    return {"message" : "login Page"}
