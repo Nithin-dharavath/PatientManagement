@@ -4,9 +4,7 @@ from pydantic import BaseModel, Field, computed_field
 from typing import Annotated, Literal, Optional
 import json
 
-
 app = FastAPI()
-
 
 class Patient(BaseModel):
     
@@ -44,8 +42,6 @@ class PatientUpdate(BaseModel):
     gender : Annotated[Literal["male", "female", "others"],Field(default=None)]
     height : Annotated[float, Field(default=None, gt=0)]
     weight: Annotated[float, Field(default=None, gt=0)]
-
-
 
 
 def load_data():
@@ -150,7 +146,6 @@ def patient_update(patient_id : str, patient_update : PatientUpdate):
     save_data(data)
 
     return JSONResponse(status_code=200, content={"message" : "patient updated sucessfully"})
-
 
 
 @app.delete("/delete/{patient_id}")
